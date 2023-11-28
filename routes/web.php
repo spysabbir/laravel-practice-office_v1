@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\Auth\AuthController;
-
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +38,6 @@ Route::get('reset-password/{token}', [AuthController::class, 'showResetPasswordF
 Route::post('reset-password', [AuthController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
 Route::get('account/verify/{token}', [AuthController::class, 'verifyAccount'])->name('user.verify');
+
+Route::get('posts', [PostController::class,'index'])->name('posts.index');
+
