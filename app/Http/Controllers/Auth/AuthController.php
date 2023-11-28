@@ -56,6 +56,19 @@ class AuthController extends Controller
             'password' => Hash::make($request['password'])
         ]);
 
+        $token = Str::random(64);
+
+        DB::table('users_verify_tokens')->insert([
+            'email' => $request->email,
+            'token' => $token,
+            'created_at' => Carbon::now()
+        ]);
+
+        Mail::send('email.emailVerificationEmail', ['token' => $token], function($message) use($request){
+            $message->to($request->email);
+            $message->subject('Email Verification Mail');
+        });
+
         Auth::login($user);
 
         return redirect()->intended('dashboard')->withSuccess('Great! You have Successfully loggedin');
@@ -64,11 +77,11 @@ class AuthController extends Controller
 
     public function dashboard()
     {
-        if(Auth::check()){
+        // if(Auth::check()){
             return view('dashboard');
-        }
+        // }
 
-        return redirect("login")->withSuccess('Opps! You do not have access');
+        // return redirect("login")->withSuccess('Opps! You do not have access');
     }
 
     public function logout()
@@ -119,11 +132,11 @@ class AuthController extends Controller
             'password_confirmation' => 'required'
         ]);
 
-        $updatePassword = DB::table('password_reset_tokens')
+        $verifyUser = DB::table('password_reset_tokens')
                             ->where(['email' => $request->email, 'token' => $request->token])
                             ->first();
 
-        if(!$updatePassword){
+        if(!$verifyUser){
             return back()->withInput()->withSuccess('error! Invalid token!');
         }
 
@@ -133,5 +146,21 @@ class AuthController extends Controller
         DB::table('password_reset_tokens')->where(['email'=> $request->email])->delete();
 
         return redirect()->intended('login')->withSuccess('Great! You have Successfully loggedin');
+    }
+
+    public function verifyAccount($token)
+    {
+        $verifyUser = DB::table('users_verify_tokens')->where('token', $token)->first();
+
+        if(!$verifyUser){
+            return back()->withSuccess('error! Invalid token!');
+        }
+
+        User::where('email', $verifyUser->email)
+                    ->update(['email_verified_at' => Carbon::now()]);
+
+        DB::table('users_verify_tokens')->where(['email'=> $verifyUser->email])->delete();
+
+        return redirect()->intended('dashboard')->withSuccess('Great! You have Successfully loggedin');
     }
 }
