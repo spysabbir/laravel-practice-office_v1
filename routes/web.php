@@ -41,3 +41,6 @@ Route::get('account/verify/{token}', [AuthController::class, 'verifyAccount'])->
 
 Route::get('posts', [PostController::class,'index'])->name('posts.index');
 
+Route::get('send-email-pdf/{id}', [PostController::class, 'sendEmailPdf']);
+
+
