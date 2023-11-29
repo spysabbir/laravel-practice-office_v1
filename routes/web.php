@@ -40,10 +40,13 @@ Route::post('reset-password', [AuthController::class, 'submitResetPasswordForm']
 
 Route::get('account/verify/{token}', [AuthController::class, 'verifyAccount'])->name('user.verify');
 
-Route::get('posts', [PostController::class,'index'])->name('posts.index');
+Route::get('posts-load-more', [PostController::class, 'postsLoadMore'])->name('posts.load.more');
 
 Route::get('send-email-pdf/{id}', [PostController::class, 'sendEmailPdf']);
 
 Route::get('birthday-notify/{id}', [UserController::class, 'birthdayNotify']);
+
+Route::get('posts-auto-load', [PostController::class, 'postsAutoLoad'])->name('posts.auto.load');
+
 
 

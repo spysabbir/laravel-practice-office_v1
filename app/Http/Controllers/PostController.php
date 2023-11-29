@@ -10,17 +10,17 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class PostController extends Controller
 {
-    public function index(Request $request)
+    public function postsLoadMore(Request $request)
     {
         $posts = Post::paginate(5);
 
         if ($request->ajax()) {
-            $view = view('data', compact('posts'))->render();
+            $view = view('component.postsLoadMoreData', compact('posts'))->render();
 
             return response()->json(['html' => $view]);
         }
 
-        return view('posts', compact('posts'));
+        return view('postsLoadMore', compact('posts'));
     }
 
     public function sendEmailPdf($id)
@@ -37,5 +37,18 @@ class PostController extends Controller
         Mail::to($data["email"])->send(new PostMailExample($data));
 
         dd('Mail sent successfully');
+    }
+
+    public function postsAutoLoad(Request $request)
+    {
+        $posts = Post::paginate(5);
+
+        if ($request->ajax()) {
+            $view = view('component.postsAutoLoadData', compact('posts'))->render();
+
+            return response()->json(['html' => $view]);
+        }
+
+        return view('postsAutoLoad', compact('posts'));
     }
 }
