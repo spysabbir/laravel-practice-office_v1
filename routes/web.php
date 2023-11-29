@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,5 +43,7 @@ Route::get('account/verify/{token}', [AuthController::class, 'verifyAccount'])->
 Route::get('posts', [PostController::class,'index'])->name('posts.index');
 
 Route::get('send-email-pdf/{id}', [PostController::class, 'sendEmailPdf']);
+
+Route::get('birthday-notify/{id}', [UserController::class, 'birthdayNotify']);
 
 
