@@ -2,14 +2,14 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Laravel Load More on Scroll Example - ItSolutionStuff.com</title>
+    <title>Laravel Load More on Scroll Example</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
 </head>
 <body>
 
 <div class="container mt-5" style="max-width: 750px">
 
-    <h1>Laravel Load More on Scroll Example - ItSolutionStuff.com</h1>
+    <h1>Laravel Load More on Scroll Example</h1>
 
     <div id="data-wrapper">
         @include('component.postsAutoLoadData')

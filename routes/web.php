@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 
@@ -47,6 +48,11 @@ Route::get('send-email-pdf/{id}', [PostController::class, 'sendEmailPdf']);
 Route::get('birthday-notify/{id}', [UserController::class, 'birthdayNotify']);
 
 Route::get('posts-auto-load', [PostController::class, 'postsAutoLoad'])->name('posts.auto.load');
+
+Route::controller(FileController::class)->group(function(){
+    Route::get('file-upload', 'index');
+    Route::post('file-upload', 'store')->name('file.upload');
+});
 
 
 
