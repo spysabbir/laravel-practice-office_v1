@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2023 at 11:38 AM
+-- Generation Time: Dec 03, 2023 at 06:00 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -24,6 +24,51 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cities`
+--
+
+CREATE TABLE `cities` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `state_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `cities`
+--
+
+INSERT INTO `cities` (`id`, `name`, `state_id`, `created_at`, `updated_at`) VALUES
+(1, 'Miami', 1, '2023-12-02 22:54:16', '2023-12-02 22:54:16'),
+(2, 'Tampa', 1, '2023-12-02 22:54:16', '2023-12-02 22:54:16'),
+(3, 'Jessore', 2, '2023-12-02 22:54:16', '2023-12-02 22:54:16'),
+(4, 'Jhenaidha', 2, '2023-12-02 22:54:16', '2023-12-02 22:54:16');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `countries`
+--
+
+CREATE TABLE `countries` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `countries`
+--
+
+INSERT INTO `countries` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'United State', '2023-12-02 22:54:16', '2023-12-02 22:54:16'),
+(2, 'Bangladesh', '2023-12-02 22:54:16', '2023-12-02 22:54:16');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `failed_jobs`
 --
 
@@ -36,6 +81,46 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `items`
+--
+
+CREATE TABLE `items` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `items`
+--
+
+INSERT INTO `items` (`id`, `title`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'Aliquam deserunt quas laboriosam reiciendis sint voluptas ut. Est exercitationem et corrupti voluptas qui ea sequi enim. Reiciendis mollitia numquam eum est voluptatum.', 'Labore vero autem qui praesentium. Culpa et et sint atque et non minus. Commodi et rem eos aut fuga vero. Mollitia et sed inventore incidunt.', '2023-12-02 22:16:39', '2023-12-02 22:16:39'),
+(2, 'Eos et rerum repellat ab adipisci. In qui qui laborum. Minus rerum est doloremque non voluptas. Aperiam cum quis et quo consequatur dolore.', 'Quia magnam repellendus amet excepturi illo et mollitia voluptate. Vel reiciendis consequatur aut praesentium eaque facere. Sequi culpa incidunt qui est cum.', '2023-12-02 22:16:39', '2023-12-02 22:16:39'),
+(3, 'Porro rerum mollitia fugit assumenda ex ad aut deleniti. In asperiores incidunt blanditiis quasi. Ea ut earum dignissimos. Quidem omnis dolores sint.', 'Suscipit et corrupti laborum ea omnis aliquid. Repellat similique voluptates qui id culpa placeat. Aut voluptates mollitia aut.', '2023-12-02 22:16:39', '2023-12-02 22:16:39'),
+(4, 'Praesentium repellat autem dolor qui. Aspernatur perferendis aut repellat qui eos omnis. Laboriosam nihil nulla ut laboriosam minima architecto vel. Est dolores error ex officia.', 'Beatae est eligendi excepturi nihil nisi facere. Sit quisquam omnis et. Et maxime numquam fugit quam voluptas harum vel.', '2023-12-02 22:16:39', '2023-12-02 22:16:39'),
+(5, 'Rerum aut exercitationem aut voluptatum. Et qui neque aut qui qui maxime accusantium. Rerum voluptatem perferendis nostrum libero et aut. Et et ducimus itaque cumque quisquam architecto excepturi.', 'Atque officia et excepturi doloremque laboriosam facere. Non assumenda asperiores sapiente maxime eveniet deleniti. Soluta veritatis accusamus neque molestias architecto.', '2023-12-02 22:16:39', '2023-12-02 22:16:39'),
+(6, 'Illum voluptate fugiat cumque et. Et amet occaecati et nobis. Iste vero nam voluptatem ullam expedita atque mollitia. Quam necessitatibus et tenetur quia labore.', 'Odio ducimus amet est sequi quia autem harum. Quis labore ratione reiciendis sint eum provident. Est dolores nobis illum rerum harum corporis. Voluptate repudiandae odit architecto officia.', '2023-12-02 22:16:39', '2023-12-02 22:16:39'),
+(7, 'Ex qui aspernatur aperiam ut recusandae. Repellat maxime illo voluptate porro. Quo magni sit aut quas molestiae deleniti omnis.', 'Voluptas iusto quisquam ut placeat. Tempore recusandae aperiam sint eum. Nam dolorem omnis vero.', '2023-12-02 22:16:39', '2023-12-02 22:16:39'),
+(8, 'Consequatur vel delectus velit. Facilis placeat eos alias iure et sunt culpa. Quibusdam porro officiis aliquid ipsa blanditiis in voluptatem. Enim rem pariatur sapiente eligendi.', 'Enim fugit qui aut dolorum consequuntur eum. Possimus cupiditate aliquid eum rerum eius sed nostrum. A asperiores id et.', '2023-12-02 22:16:39', '2023-12-02 22:16:39'),
+(9, 'Cumque iste sed esse ea. Soluta excepturi fugiat qui in dolorem esse vel. Impedit voluptatibus ea dolor unde.', 'Doloremque quia est qui laborum velit mollitia. Asperiores adipisci nostrum et cupiditate accusamus earum molestiae. Modi temporibus illum ut est. Nulla occaecati temporibus qui accusantium necessitatibus facilis.', '2023-12-02 22:16:39', '2023-12-02 22:16:39'),
+(10, 'Ipsa omnis iusto saepe id deserunt sed quis. Ex corporis nesciunt quia suscipit libero. Veniam corporis qui et animi laboriosam dolorem.', 'Dolores nemo ea sit. Consequuntur aut in quia sed fugiat atque quia. Nisi debitis itaque eaque aut qui quia distinctio explicabo. Odio magni impedit omnis quis.', '2023-12-02 22:16:39', '2023-12-02 22:16:39'),
+(11, 'A minus consectetur autem. Accusantium exercitationem id eum nostrum molestiae. Eum facere ut velit aliquam aspernatur perspiciatis.', 'Porro nulla et placeat maiores. Nemo corporis enim eaque pariatur. Est adipisci molestiae eos odit ex doloremque sint.', '2023-12-02 22:16:39', '2023-12-02 22:16:39'),
+(12, 'Necessitatibus vel nulla rerum maiores voluptas. Quo porro ipsum culpa laborum illo rerum in sequi. Aut praesentium quisquam et ipsam officiis. Ullam voluptate quis non praesentium quia ut.', 'Provident ut natus expedita est totam ipsa. Nobis fugit fugiat quibusdam nihil veritatis. Itaque illo aut unde architecto aliquam et.', '2023-12-02 22:16:39', '2023-12-02 22:16:39'),
+(13, 'Sequi minus saepe delectus quod consequatur rem dolorem. Est nesciunt sint fuga eligendi atque repellat. Et ad ipsam ut pariatur. Hic magnam in sunt aut.', 'Repudiandae officia omnis quo est ut cumque. Eum consequatur ad et odit quo ea. Et unde voluptatum facere neque. Quis consequatur eaque est ea qui aut.', '2023-12-02 22:16:39', '2023-12-02 22:16:39'),
+(14, 'Neque aut quia quasi sed officiis explicabo qui. Quasi at dicta voluptatibus. Mollitia quod itaque incidunt rerum labore hic.', 'Illo cupiditate vero est vel delectus. Odit nihil quas eum quia tempora quo. Voluptate deserunt cumque nobis ullam assumenda optio. In et neque voluptatum qui unde.', '2023-12-02 22:16:39', '2023-12-02 22:16:39'),
+(15, 'Nostrum veniam consequatur corporis voluptatibus. Aut fugit amet ipsum. Sit nam minus possimus id corporis. Culpa aspernatur neque officia cum illo officia sint.', 'Rerum porro aperiam et dolorum voluptatem vel. Molestias sint veniam natus. Quaerat repellat magni placeat. Fugiat dicta reprehenderit voluptatem magni.', '2023-12-02 22:16:39', '2023-12-02 22:16:39'),
+(16, 'Qui ut voluptatem esse qui harum debitis. Quidem atque rem nihil et. Odio et voluptates facere non nesciunt veritatis. Et accusantium eaque ut cum sed.', 'Molestiae quis voluptatum accusantium fugiat veritatis. Earum eum quis non quae quo. Facilis quia voluptatibus assumenda excepturi incidunt aut veniam.', '2023-12-02 22:16:40', '2023-12-02 22:16:40'),
+(17, 'Et culpa voluptatem et officia et ut. Quidem repudiandae quae hic repellat sint. Inventore iusto assumenda neque qui. Quo eum dignissimos incidunt et aut.', 'Delectus sed ea earum et voluptatem dolores. Ut vero est et dolorum. Eos adipisci vel suscipit neque ullam excepturi necessitatibus. Ut aspernatur et adipisci omnis iusto ex hic.', '2023-12-02 22:16:40', '2023-12-02 22:16:40'),
+(18, 'Ea voluptate sint voluptatem et quibusdam nemo sed. Magnam quasi quo est quam pariatur sit aut. Et consequatur possimus et. Magni magnam voluptatibus sit reprehenderit eaque.', 'Perferendis quibusdam facere enim et rerum. Ullam sunt totam laudantium corporis. Dolore ut perferendis dolorem eum sint aut. Modi et dolore adipisci laborum qui.', '2023-12-02 22:16:40', '2023-12-02 22:16:40'),
+(19, 'Sequi quas quia ab assumenda ratione. Voluptatem ut quos sint ducimus. Totam sunt iure aliquam aliquam qui voluptatem. Velit dolorum ipsum architecto ea quis.', 'Ut aut quaerat itaque. Velit similique perferendis voluptatem quo eveniet qui vel. Earum occaecati et distinctio et dignissimos suscipit quia velit. Ut est recusandae reiciendis ducimus minima ut. Numquam saepe dolores minus nesciunt dolore voluptatem.', '2023-12-02 22:16:40', '2023-12-02 22:16:40'),
+(20, 'Voluptatum quia sint eaque sed in et. Quia autem esse magni hic est consectetur. Consectetur et odio reiciendis voluptates facere esse est. Ea sint omnis et.', 'Praesentium aut praesentium ea amet expedita id pariatur. Cum quam facilis perferendis quas rerum ut. Et hic et amet id eos. Vel minus ut velit sint. At totam molestiae quo consequatur.', '2023-12-02 22:16:40', '2023-12-02 22:16:40');
 
 -- --------------------------------------------------------
 
@@ -60,7 +145,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (5, '2023_11_28_090652_create_users_verify_tokens_table', 2),
 (6, '2023_11_28_105732_create_posts_table', 3),
-(7, '2023_11_29_041315_add_birthdate_column_to_users_table', 4);
+(7, '2023_11_29_041315_add_birthdate_column_to_users_table', 4),
+(8, '2023_12_03_040400_create_items_table', 5),
+(9, '2023_12_03_043136_create_countries_table', 6),
+(10, '2023_12_03_043206_create_states_table', 6),
+(11, '2023_12_03_043214_create_cities_table', 6);
 
 -- --------------------------------------------------------
 
@@ -137,6 +226,28 @@ INSERT INTO `posts` (`id`, `title`, `slug`, `body`, `created_at`, `updated_at`) 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `states`
+--
+
+CREATE TABLE `states` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `country_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `states`
+--
+
+INSERT INTO `states` (`id`, `name`, `country_id`, `created_at`, `updated_at`) VALUES
+(1, 'Florida', 1, '2023-12-02 22:54:16', '2023-12-02 22:54:16'),
+(2, 'Khulna', 1, '2023-12-02 22:54:16', '2023-12-02 22:54:16');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -186,11 +297,29 @@ CREATE TABLE `users_verify_tokens` (
 --
 
 --
+-- Indexes for table `cities`
+--
+ALTER TABLE `cities`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `countries`
+--
+ALTER TABLE `countries`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `items`
+--
+ALTER TABLE `items`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `migrations`
@@ -219,6 +348,12 @@ ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `states`
+--
+ALTER TABLE `states`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -236,16 +371,34 @@ ALTER TABLE `users_verify_tokens`
 --
 
 --
+-- AUTO_INCREMENT for table `cities`
+--
+ALTER TABLE `cities`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `countries`
+--
+ALTER TABLE `countries`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `items`
+--
+ALTER TABLE `items`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -258,6 +411,12 @@ ALTER TABLE `personal_access_tokens`
 --
 ALTER TABLE `posts`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `states`
+--
+ALTER TABLE `states`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`

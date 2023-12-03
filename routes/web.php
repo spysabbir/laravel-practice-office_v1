@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\PostController;
@@ -57,6 +58,10 @@ Route::controller(FileController::class)->group(function(){
 
 
 Route::get('ajax-pagination', [ItemController::class, 'index'])->name('ajax.pagination');
+
+Route::get('dropdown', [DropdownController::class, 'index']);
+Route::post('api/fetch-states', [DropdownController::class, 'fetchState']);
+Route::post('api/fetch-cities', [DropdownController::class, 'fetchCity']);
 
 
 
