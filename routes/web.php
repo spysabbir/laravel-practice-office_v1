@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 
@@ -53,6 +54,10 @@ Route::controller(FileController::class)->group(function(){
     Route::get('file-upload', 'index');
     Route::post('file-upload', 'store')->name('file.upload');
 });
+
+
+Route::get('ajax-pagination', [ItemController::class, 'index'])->name('ajax.pagination');
+
 
 
 
