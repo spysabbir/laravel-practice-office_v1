@@ -7,6 +7,7 @@ use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -64,6 +65,8 @@ Route::post('api/fetch-states', [DropdownController::class, 'fetchState']);
 Route::post('api/fetch-cities', [DropdownController::class, 'fetchCity']);
 
 Route::get('display-user', [UserController::class, 'displayUser']);
+
+Route::resource('product', ProductController::class);
 
 
 
