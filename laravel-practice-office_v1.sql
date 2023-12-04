@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2023 at 06:00 AM
+-- Generation Time: Dec 04, 2023 at 12:36 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -149,7 +149,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (8, '2023_12_03_040400_create_items_table', 5),
 (9, '2023_12_03_043136_create_countries_table', 6),
 (10, '2023_12_03_043206_create_states_table', 6),
-(11, '2023_12_03_043214_create_cities_table', 6);
+(11, '2023_12_03_043214_create_cities_table', 6),
+(12, '2023_12_04_095031_create_products_table', 7);
 
 -- --------------------------------------------------------
 
@@ -226,6 +227,21 @@ INSERT INTO `posts` (`id`, `title`, `slug`, `body`, `created_at`, `updated_at`) 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `detail` longtext NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `states`
 --
 
@@ -278,7 +294,27 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (15, 'Dedric Kulas', 'sipes.keshaun@example.org', '2023-11-28 23:05:09', '$2y$12$Nmbl0cdgDdvDgx.xd8uK4.0FMExOs7An8ujznUniCNUaq4q0DrOki', 'LsuCrPZS0r', '2023-11-28 23:05:09', '2023-11-28 23:05:09', NULL),
 (16, 'Dr. Colt Volkman DVM', 'ppacocha@example.com', '2023-11-28 23:05:09', '$2y$12$Nmbl0cdgDdvDgx.xd8uK4.0FMExOs7An8ujznUniCNUaq4q0DrOki', 'szaYbLvopk', '2023-11-28 23:05:09', '2023-11-28 23:05:09', NULL),
 (17, 'Nicole Tremblay V', 'vito57@example.net', '2023-11-28 23:05:09', '$2y$12$Nmbl0cdgDdvDgx.xd8uK4.0FMExOs7An8ujznUniCNUaq4q0DrOki', 'WMYU2H3lVB', '2023-11-28 23:05:09', '2023-11-28 23:05:09', NULL),
-(18, 'Prof. Jerrold Johns Sr.', 'brendon61@example.com', '2023-11-28 23:05:09', '$2y$12$Nmbl0cdgDdvDgx.xd8uK4.0FMExOs7An8ujznUniCNUaq4q0DrOki', 'FflPmqEpzT', '2023-11-28 23:05:09', '2023-11-28 23:05:09', NULL);
+(18, 'Prof. Jerrold Johns Sr.', 'brendon61@example.com', '2023-11-28 23:05:09', '$2y$12$Nmbl0cdgDdvDgx.xd8uK4.0FMExOs7An8ujznUniCNUaq4q0DrOki', 'FflPmqEpzT', '2023-11-28 23:05:09', '2023-11-28 23:05:09', NULL),
+(19, 'Ms. Adriana Adams', 'fwaelchi@example.com', '2023-12-04 04:42:29', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'Luzu0t0ALZ', '2023-12-04 04:42:30', '2023-12-04 04:42:30', NULL),
+(20, 'Lacey Cole IV', 'ziemann.izabella@example.com', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', '9m3fbbzXGe', '2023-12-04 04:42:30', '2023-12-04 04:42:30', NULL),
+(21, 'Mr. Cecil Metz', 'stephon.daniel@example.com', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'ohW9p3y82O', '2023-12-04 04:42:30', '2023-12-04 04:42:30', NULL),
+(22, 'Jovan Schiller', 'mccullough.pauline@example.net', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', '27nsnx278y', '2023-12-04 04:42:30', '2023-12-04 04:42:30', NULL),
+(23, 'Mr. Rosendo Hansen III', 'jevon.bernier@example.org', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'xz4FobKCQO', '2023-12-04 04:42:30', '2023-12-04 04:42:30', NULL),
+(24, 'Mrs. Charity Dietrich', 'schroeder.dwight@example.org', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'BVPaDbaHmY', '2023-12-04 04:42:30', '2023-12-04 04:42:30', NULL),
+(25, 'Kaitlyn Barton', 'stehr.darrell@example.net', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'iG3zsjvMZx', '2023-12-04 04:42:30', '2023-12-04 04:42:30', NULL),
+(26, 'Prof. Bradford Toy PhD', 'strosin.gordon@example.org', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'hIAVAX0HAn', '2023-12-04 04:42:30', '2023-12-04 04:42:30', NULL),
+(27, 'Prof. Wayne Beier', 'xyundt@example.net', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', '1dVRML4kJF', '2023-12-04 04:42:30', '2023-12-04 04:42:30', NULL),
+(28, 'Miss Angela Gusikowski', 'wiley68@example.net', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'lM96CsVyRU', '2023-12-04 04:42:30', '2023-12-04 04:42:30', NULL),
+(29, 'Emie Smith PhD', 'axel.walsh@example.org', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', '0TAIJcgP8J', '2023-12-04 04:42:30', '2023-12-04 04:42:30', NULL),
+(30, 'Ashlee Koelpin', 'chet64@example.net', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'bG2sUzhvgo', '2023-12-04 04:42:30', '2023-12-04 04:42:30', NULL),
+(31, 'Dr. Felicity Simonis', 'herminio36@example.net', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'JS3eMr1PlQ', '2023-12-04 04:42:30', '2023-12-04 04:42:30', NULL),
+(32, 'Shea Monahan MD', 'glover.mack@example.org', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'auu7ETIOIt', '2023-12-04 04:42:30', '2023-12-04 04:42:30', NULL),
+(33, 'Kendrick Reichel', 'gutmann.mathias@example.com', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'iPQXDj0ghF', '2023-12-04 04:42:31', '2023-12-04 04:42:31', NULL),
+(34, 'Annabell Cummings', 'vito.hilpert@example.com', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'xuJfauuve5', '2023-12-04 04:42:31', '2023-12-04 04:42:31', NULL),
+(35, 'Celine Fritsch', 'bechtelar.barton@example.org', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'tHkEAGghLA', '2023-12-04 04:42:31', '2023-12-04 04:42:31', NULL),
+(36, 'Norwood Ziemann', 'winnifred.waelchi@example.net', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', '0jCzeGH75e', '2023-12-04 04:42:31', '2023-12-04 04:42:31', NULL),
+(37, 'Darby Yundt Sr.', 'hoppe.shanny@example.net', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'Tke3HCMQtg', '2023-12-04 04:42:31', '2023-12-04 04:42:31', NULL),
+(38, 'Oswaldo Abbott', 'lakin.una@example.org', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'Sutio50F9n', '2023-12-04 04:42:31', '2023-12-04 04:42:31', NULL);
 
 -- --------------------------------------------------------
 
@@ -348,6 +384,12 @@ ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `states`
 --
 ALTER TABLE `states`
@@ -398,7 +440,7 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -413,6 +455,12 @@ ALTER TABLE `posts`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `states`
 --
 ALTER TABLE `states`
@@ -422,7 +470,7 @@ ALTER TABLE `states`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

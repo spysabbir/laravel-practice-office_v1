@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\LangController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
@@ -58,7 +59,6 @@ Route::controller(FileController::class)->group(function(){
     Route::post('file-upload', 'store')->name('file.upload');
 });
 
-
 Route::get('ajax-pagination', [ItemController::class, 'index'])->name('ajax.pagination');
 
 Route::get('dropdown', [DropdownController::class, 'index']);
@@ -73,6 +73,9 @@ Route::controller(SearchController::class)->group(function(){
     Route::get('demo-search', 'index');
     Route::get('autocomplete', 'autocomplete')->name('autocomplete');
 });
+
+Route::get('lang/home', [LangController::class, 'index']);
+Route::get('lang/change', [LangController::class, 'change'])->name('changeLang');
 
 
 
