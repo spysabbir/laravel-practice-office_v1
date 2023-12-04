@@ -63,6 +63,9 @@ Route::get('dropdown', [DropdownController::class, 'index']);
 Route::post('api/fetch-states', [DropdownController::class, 'fetchState']);
 Route::post('api/fetch-cities', [DropdownController::class, 'fetchCity']);
 
+Route::get('display-user', [UserController::class, 'displayUser']);
+
+
 
 
 

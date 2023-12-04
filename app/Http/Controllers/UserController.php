@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Notifications\BirthdayWish;
 use Illuminate\Http\Request;
+use Stevebauman\Location\Facades\Location;
 
 class UserController extends Controller
 {
@@ -18,5 +19,14 @@ class UserController extends Controller
         $user->notify(new BirthdayWish($messages));
 
         dd('Done');
+    }
+
+    public function displayUser()
+    {
+        /* $ip = $request->ip(); Dynamic IP address */
+        $ip = '103.4.119.20';
+        $currentUserInfo = Location::get($ip);
+
+        return view('user', compact('currentUserInfo'));
     }
 }
