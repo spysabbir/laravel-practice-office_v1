@@ -9,6 +9,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
 
@@ -76,6 +77,14 @@ Route::controller(SearchController::class)->group(function(){
 
 Route::get('lang/home', [LangController::class, 'index']);
 Route::get('lang/change', [LangController::class, 'change'])->name('changeLang');
+
+
+Route::get('qrcode', [QrCodeController::class, 'qrcode']);
+Route::get('qrcode-with-color', [QrCodeController::class, 'qrcodeWithColor']);
+Route::get('qrcode-with-image', [QrCodeController::class, 'qrcodeWithImage']);
+Route::get('qrcode-email', [QrCodeController::class, 'qrcodeEmail']);
+Route::get('qrcode-phone', [QrCodeController::class, 'qrcodePhone']);
+Route::get('qrcode-sms', [QrCodeController::class, 'qrcodeSms']);
 
 
 
