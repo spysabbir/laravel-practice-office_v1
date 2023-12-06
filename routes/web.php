@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\ItemController;
@@ -88,6 +89,9 @@ Route::get('qrcode-phone', [QrCodeController::class, 'qrcodePhone']);
 Route::get('qrcode-sms', [QrCodeController::class, 'qrcodeSms']);
 
 Route::resource('students', StudentController::class);
+
+
+Route::get('categories', [CategoryController::class, 'index']);
 
 
 
