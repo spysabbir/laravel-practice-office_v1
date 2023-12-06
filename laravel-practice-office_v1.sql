@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2023 at 12:36 PM
+-- Generation Time: Dec 06, 2023 at 09:56 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -150,7 +150,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (9, '2023_12_03_043136_create_countries_table', 6),
 (10, '2023_12_03_043206_create_states_table', 6),
 (11, '2023_12_03_043214_create_cities_table', 6),
-(12, '2023_12_04_095031_create_products_table', 7);
+(12, '2023_12_04_095031_create_products_table', 7),
+(13, '2023_12_05_094105_create_students_table', 8);
 
 -- --------------------------------------------------------
 
@@ -260,6 +261,27 @@ CREATE TABLE `states` (
 INSERT INTO `states` (`id`, `name`, `country_id`, `created_at`, `updated_at`) VALUES
 (1, 'Florida', 1, '2023-12-02 22:54:16', '2023-12-02 22:54:16'),
 (2, 'Khulna', 1, '2023-12-02 22:54:16', '2023-12-02 22:54:16');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `students`
+--
+
+CREATE TABLE `students` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`id`, `name`, `email`, `created_at`, `updated_at`) VALUES
+(1, 'Sabbir1u', 'sabbir@gmail.comu', '2023-12-05 05:16:10', '2023-12-06 02:52:00');
 
 -- --------------------------------------------------------
 
@@ -396,6 +418,12 @@ ALTER TABLE `states`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `students`
+--
+ALTER TABLE `students`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -440,7 +468,7 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -465,6 +493,12 @@ ALTER TABLE `products`
 --
 ALTER TABLE `states`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `students`
+--
+ALTER TABLE `students`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`

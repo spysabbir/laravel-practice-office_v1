@@ -11,6 +11,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -85,6 +86,9 @@ Route::get('qrcode-with-image', [QrCodeController::class, 'qrcodeWithImage']);
 Route::get('qrcode-email', [QrCodeController::class, 'qrcodeEmail']);
 Route::get('qrcode-phone', [QrCodeController::class, 'qrcodePhone']);
 Route::get('qrcode-sms', [QrCodeController::class, 'qrcodeSms']);
+
+Route::resource('students', StudentController::class);
+
 
 
 
