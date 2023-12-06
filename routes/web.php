@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\BarcodeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\FileController;
@@ -92,6 +93,10 @@ Route::resource('students', StudentController::class);
 
 
 Route::get('categories', [CategoryController::class, 'index']);
+
+Route::get('barcode', [BarcodeController::class, 'barcode']);
+Route::get('barcode-save', [BarcodeController::class, 'barcodeSave']);
+Route::get('barcode-blade', [BarcodeController::class, 'barcodeBlade']);
 
 
 
