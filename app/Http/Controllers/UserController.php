@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendEmailJob;
 use App\Models\User;
 use App\Notifications\BirthdayWish;
 use Illuminate\Http\Request;
@@ -28,5 +29,11 @@ class UserController extends Controller
         $currentUserInfo = Location::get($ip);
 
         return view('user', compact('currentUserInfo'));
+    }
+
+    public function sendEmail() {
+        dispatch(new SendEmailJob);
+
+        dd('Send Done');
     }
 }

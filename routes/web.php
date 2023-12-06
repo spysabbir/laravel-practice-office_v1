@@ -98,6 +98,8 @@ Route::get('barcode', [BarcodeController::class, 'barcode']);
 Route::get('barcode-save', [BarcodeController::class, 'barcodeSave']);
 Route::get('barcode-blade', [BarcodeController::class, 'barcodeBlade']);
 
+Route::get('email-test', [UserController::class, 'sendEmail']);
+
 
 
 
