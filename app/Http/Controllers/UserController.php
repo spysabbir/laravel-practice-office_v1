@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\UsersExport;
+use App\Imports\UsersImport;
 use App\Jobs\SendEmailJob;
 use App\Models\User;
 use App\Notifications\BirthdayWish;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use Stevebauman\Location\Facades\Location;
 
 class UserController extends Controller
@@ -36,4 +39,24 @@ class UserController extends Controller
 
         dd('Send Done');
     }
+
+    public function index()
+    {
+        $users = User::get();
+
+        return view('users', compact('users'));
+    }
+    
+    public function export()
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
+    }
+
+    public function import()
+    {
+        Excel::import(new UsersImport,request()->file('file'));
+
+        return back();
+    }
+
 }

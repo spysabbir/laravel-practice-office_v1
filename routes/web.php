@@ -109,6 +109,12 @@ Route::get('call-helper', function(){
     var_dump("Converted into 'YMD': " . $ymd);
 });
 
+Route::controller(UserController::class)->group(function(){
+    Route::get('users', 'index');
+    Route::get('users-export', 'export')->name('users.export');
+    Route::post('users-import', 'import')->name('users.import');
+});
+
 
 
 
