@@ -34,6 +34,9 @@ Route::get('/', function () {
 Route::controller(ImageController::class)->group(function(){
     Route::get('image-upload', 'index');
     Route::post('image-upload', 'store')->name('image.store');
+
+    Route::get('image-upload-convert', 'imageUploadConvert');
+    Route::post('image-upload-convert', 'imageUploadConvertStore')->name('image.convert.store');
 });
 
 Route::get('login', [AuthController::class, 'login'])->name('login');

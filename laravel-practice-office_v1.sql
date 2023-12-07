@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2023 at 09:56 AM
+-- Generation Time: Dec 07, 2023 at 12:18 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `laravel-practice-office_v1`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `unique_id` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`, `slug`, `unique_id`, `created_at`, `updated_at`) VALUES
+(1, 'Boyes', 'boyes', 'C-1', '2023-12-06 04:24:19', '2023-12-06 04:24:19'),
+(2, 'Girls', 'girls', 'C-2', '2023-12-06 04:24:50', '2023-12-06 04:24:50');
 
 -- --------------------------------------------------------
 
@@ -125,6 +148,22 @@ INSERT INTO `items` (`id`, `title`, `description`, `created_at`, `updated_at`) V
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `jobs`
+--
+
+CREATE TABLE `jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `queue` varchar(255) NOT NULL,
+  `payload` longtext NOT NULL,
+  `attempts` tinyint(3) UNSIGNED NOT NULL,
+  `reserved_at` int(10) UNSIGNED DEFAULT NULL,
+  `available_at` int(10) UNSIGNED NOT NULL,
+  `created_at` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -151,7 +190,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (10, '2023_12_03_043206_create_states_table', 6),
 (11, '2023_12_03_043214_create_cities_table', 6),
 (12, '2023_12_04_095031_create_products_table', 7),
-(13, '2023_12_05_094105_create_students_table', 8);
+(13, '2023_12_05_094105_create_students_table', 8),
+(16, '2023_12_06_101111_create_categories_table', 9),
+(17, '2023_12_06_111838_create_jobs_table', 10);
 
 -- --------------------------------------------------------
 
@@ -306,37 +347,19 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `birthdate`) VALUES
-(8, 'Sabbir', 'sabbir@gmail.com', '2023-11-28 03:36:56', '$2y$12$EL1BNxE4CIo71O/oorfzcu7mSJZsu4NzqCTlWWE19MEIutiLIq5fy', NULL, '2023-11-28 03:36:29', '2023-11-28 03:36:56', NULL),
-(9, 'Kailey Raynor', 'dion.kris@example.com', '2023-11-28 23:05:08', '$2y$12$Nmbl0cdgDdvDgx.xd8uK4.0FMExOs7An8ujznUniCNUaq4q0DrOki', 'O0PLkL5Psg', '2023-11-28 23:05:08', '2023-11-28 23:05:08', NULL),
-(10, 'Javonte Kshlerin', 'mae.wuckert@example.com', '2023-11-28 23:05:08', '$2y$12$Nmbl0cdgDdvDgx.xd8uK4.0FMExOs7An8ujznUniCNUaq4q0DrOki', '3SzLS4Xlyj', '2023-11-28 23:05:08', '2023-11-28 23:05:08', NULL),
-(11, 'Prof. Emelie Beatty', 'marjory.harris@example.org', '2023-11-28 23:05:09', '$2y$12$Nmbl0cdgDdvDgx.xd8uK4.0FMExOs7An8ujznUniCNUaq4q0DrOki', 'AnL4COb6WY', '2023-11-28 23:05:09', '2023-11-28 23:05:09', NULL),
-(12, 'Gilberto Monahan', 'kiley33@example.org', '2023-11-28 23:05:09', '$2y$12$Nmbl0cdgDdvDgx.xd8uK4.0FMExOs7An8ujznUniCNUaq4q0DrOki', 'BIf533OZRW', '2023-11-28 23:05:09', '2023-11-28 23:05:09', NULL),
-(13, 'Keith Wisozk', 'piper06@example.org', '2023-11-28 23:05:09', '$2y$12$Nmbl0cdgDdvDgx.xd8uK4.0FMExOs7An8ujznUniCNUaq4q0DrOki', 'Ef1bGgWnYA', '2023-11-28 23:05:09', '2023-11-28 23:05:09', NULL),
-(14, 'Lenny Ritchie', 'haleigh.kertzmann@example.net', '2023-11-28 23:05:09', '$2y$12$Nmbl0cdgDdvDgx.xd8uK4.0FMExOs7An8ujznUniCNUaq4q0DrOki', '29ZBaragX3', '2023-11-28 23:05:09', '2023-11-28 23:05:09', NULL),
-(15, 'Dedric Kulas', 'sipes.keshaun@example.org', '2023-11-28 23:05:09', '$2y$12$Nmbl0cdgDdvDgx.xd8uK4.0FMExOs7An8ujznUniCNUaq4q0DrOki', 'LsuCrPZS0r', '2023-11-28 23:05:09', '2023-11-28 23:05:09', NULL),
-(16, 'Dr. Colt Volkman DVM', 'ppacocha@example.com', '2023-11-28 23:05:09', '$2y$12$Nmbl0cdgDdvDgx.xd8uK4.0FMExOs7An8ujznUniCNUaq4q0DrOki', 'szaYbLvopk', '2023-11-28 23:05:09', '2023-11-28 23:05:09', NULL),
-(17, 'Nicole Tremblay V', 'vito57@example.net', '2023-11-28 23:05:09', '$2y$12$Nmbl0cdgDdvDgx.xd8uK4.0FMExOs7An8ujznUniCNUaq4q0DrOki', 'WMYU2H3lVB', '2023-11-28 23:05:09', '2023-11-28 23:05:09', NULL),
-(18, 'Prof. Jerrold Johns Sr.', 'brendon61@example.com', '2023-11-28 23:05:09', '$2y$12$Nmbl0cdgDdvDgx.xd8uK4.0FMExOs7An8ujznUniCNUaq4q0DrOki', 'FflPmqEpzT', '2023-11-28 23:05:09', '2023-11-28 23:05:09', NULL),
-(19, 'Ms. Adriana Adams', 'fwaelchi@example.com', '2023-12-04 04:42:29', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'Luzu0t0ALZ', '2023-12-04 04:42:30', '2023-12-04 04:42:30', NULL),
-(20, 'Lacey Cole IV', 'ziemann.izabella@example.com', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', '9m3fbbzXGe', '2023-12-04 04:42:30', '2023-12-04 04:42:30', NULL),
-(21, 'Mr. Cecil Metz', 'stephon.daniel@example.com', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'ohW9p3y82O', '2023-12-04 04:42:30', '2023-12-04 04:42:30', NULL),
-(22, 'Jovan Schiller', 'mccullough.pauline@example.net', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', '27nsnx278y', '2023-12-04 04:42:30', '2023-12-04 04:42:30', NULL),
-(23, 'Mr. Rosendo Hansen III', 'jevon.bernier@example.org', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'xz4FobKCQO', '2023-12-04 04:42:30', '2023-12-04 04:42:30', NULL),
-(24, 'Mrs. Charity Dietrich', 'schroeder.dwight@example.org', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'BVPaDbaHmY', '2023-12-04 04:42:30', '2023-12-04 04:42:30', NULL),
-(25, 'Kaitlyn Barton', 'stehr.darrell@example.net', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'iG3zsjvMZx', '2023-12-04 04:42:30', '2023-12-04 04:42:30', NULL),
-(26, 'Prof. Bradford Toy PhD', 'strosin.gordon@example.org', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'hIAVAX0HAn', '2023-12-04 04:42:30', '2023-12-04 04:42:30', NULL),
-(27, 'Prof. Wayne Beier', 'xyundt@example.net', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', '1dVRML4kJF', '2023-12-04 04:42:30', '2023-12-04 04:42:30', NULL),
-(28, 'Miss Angela Gusikowski', 'wiley68@example.net', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'lM96CsVyRU', '2023-12-04 04:42:30', '2023-12-04 04:42:30', NULL),
-(29, 'Emie Smith PhD', 'axel.walsh@example.org', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', '0TAIJcgP8J', '2023-12-04 04:42:30', '2023-12-04 04:42:30', NULL),
-(30, 'Ashlee Koelpin', 'chet64@example.net', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'bG2sUzhvgo', '2023-12-04 04:42:30', '2023-12-04 04:42:30', NULL),
-(31, 'Dr. Felicity Simonis', 'herminio36@example.net', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'JS3eMr1PlQ', '2023-12-04 04:42:30', '2023-12-04 04:42:30', NULL),
-(32, 'Shea Monahan MD', 'glover.mack@example.org', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'auu7ETIOIt', '2023-12-04 04:42:30', '2023-12-04 04:42:30', NULL),
-(33, 'Kendrick Reichel', 'gutmann.mathias@example.com', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'iPQXDj0ghF', '2023-12-04 04:42:31', '2023-12-04 04:42:31', NULL),
-(34, 'Annabell Cummings', 'vito.hilpert@example.com', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'xuJfauuve5', '2023-12-04 04:42:31', '2023-12-04 04:42:31', NULL),
-(35, 'Celine Fritsch', 'bechtelar.barton@example.org', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'tHkEAGghLA', '2023-12-04 04:42:31', '2023-12-04 04:42:31', NULL),
-(36, 'Norwood Ziemann', 'winnifred.waelchi@example.net', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', '0jCzeGH75e', '2023-12-04 04:42:31', '2023-12-04 04:42:31', NULL),
-(37, 'Darby Yundt Sr.', 'hoppe.shanny@example.net', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'Tke3HCMQtg', '2023-12-04 04:42:31', '2023-12-04 04:42:31', NULL),
-(38, 'Oswaldo Abbott', 'lakin.una@example.org', '2023-12-04 04:42:30', '$2y$12$oACIsUrjngxK6HDFjjtH5euZu.w3Pni/iUCsFLUeO8CC33tIwicoW', 'Sutio50F9n', '2023-12-04 04:42:31', '2023-12-04 04:42:31', NULL);
+(39, 'Raul Weissnat', 'lehner.janis@example.com', '2023-12-07 04:24:24', '$2y$12$uwjUA4YBvUnn4BYftO2Cc.SGqClFMbIO/Tkc7b.IMHGAoDd0zIBoO', 'oTiU7bvDjL', '2023-12-07 04:24:24', '2023-12-07 04:24:24', NULL),
+(40, 'Dr. Kaden Keebler', 'swift.salvador@example.com', '2023-12-07 04:24:24', '$2y$12$uwjUA4YBvUnn4BYftO2Cc.SGqClFMbIO/Tkc7b.IMHGAoDd0zIBoO', 'N2Tf15v3m6', '2023-12-07 04:24:24', '2023-12-07 04:24:24', NULL),
+(41, 'Jana Schultz', 'aniyah94@example.org', '2023-12-07 04:24:24', '$2y$12$uwjUA4YBvUnn4BYftO2Cc.SGqClFMbIO/Tkc7b.IMHGAoDd0zIBoO', '4YHJ9ywEhT', '2023-12-07 04:24:24', '2023-12-07 04:24:24', NULL),
+(42, 'Suzanne Bernhard', 'ignatius92@example.org', '2023-12-07 04:24:24', '$2y$12$uwjUA4YBvUnn4BYftO2Cc.SGqClFMbIO/Tkc7b.IMHGAoDd0zIBoO', 'Mjzwo2INWI', '2023-12-07 04:24:24', '2023-12-07 04:24:24', NULL),
+(43, 'Marcelino Hegmann I', 'olen.oconner@example.org', '2023-12-07 04:24:24', '$2y$12$uwjUA4YBvUnn4BYftO2Cc.SGqClFMbIO/Tkc7b.IMHGAoDd0zIBoO', 'n90BmSY3iq', '2023-12-07 04:24:24', '2023-12-07 04:24:24', NULL),
+(44, 'Monica Kihn', 'chase.watsica@example.org', '2023-12-07 04:24:24', '$2y$12$uwjUA4YBvUnn4BYftO2Cc.SGqClFMbIO/Tkc7b.IMHGAoDd0zIBoO', 'J0oq8PQ5AS', '2023-12-07 04:24:24', '2023-12-07 04:24:24', NULL),
+(45, 'Joshuah Carroll PhD', 'romaine.ohara@example.org', '2023-12-07 04:24:24', '$2y$12$uwjUA4YBvUnn4BYftO2Cc.SGqClFMbIO/Tkc7b.IMHGAoDd0zIBoO', 'G9oPgD3RP3', '2023-12-07 04:24:24', '2023-12-07 04:24:24', NULL),
+(46, 'Carley Feeney Sr.', 'sherman28@example.net', '2023-12-07 04:24:24', '$2y$12$uwjUA4YBvUnn4BYftO2Cc.SGqClFMbIO/Tkc7b.IMHGAoDd0zIBoO', 'Q9jV9xAVzp', '2023-12-07 04:24:24', '2023-12-07 04:24:24', NULL),
+(47, 'Dr. Talia Gerhold DVM', 'cara84@example.org', '2023-12-07 04:24:24', '$2y$12$uwjUA4YBvUnn4BYftO2Cc.SGqClFMbIO/Tkc7b.IMHGAoDd0zIBoO', 'GU50e1UCKL', '2023-12-07 04:24:24', '2023-12-07 04:24:24', NULL),
+(48, 'Prof. Sunny Yundt', 'myrtice.renner@example.net', '2023-12-07 04:24:24', '$2y$12$uwjUA4YBvUnn4BYftO2Cc.SGqClFMbIO/Tkc7b.IMHGAoDd0zIBoO', 'TXUgHk41Qj', '2023-12-07 04:24:25', '2023-12-07 04:24:25', NULL),
+(49, 'Raul Weissnat', 'abc@example.com', NULL, '$2y$12$g/pEfGCxOvxs8Av1/a7cJu.2MAZ9Q606cV9SE.r3qWOfmEQQFCK2u', NULL, '2023-12-07 04:35:47', '2023-12-07 04:35:47', NULL),
+(50, 'Dr. Kaden Keebler', 'def@example.com', NULL, '$2y$12$IoFtdP6AIrinoE.qLovxoekDwm3JfQUvJDqAGQFePqUQ89PFGwufq', NULL, '2023-12-07 04:35:47', '2023-12-07 04:35:47', NULL),
+(51, 'Jana Schultz', 'ghi@example.org', NULL, '$2y$12$AjGglPEl4yUtP7Oo7RRUHe1IF5fO9s0DMrorBtpjywoyQDSRzsEf2', NULL, '2023-12-07 04:35:48', '2023-12-07 04:35:48', NULL);
 
 -- --------------------------------------------------------
 
@@ -353,6 +376,12 @@ CREATE TABLE `users_verify_tokens` (
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `cities`
@@ -378,6 +407,13 @@ ALTER TABLE `failed_jobs`
 --
 ALTER TABLE `items`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `jobs`
+--
+ALTER TABLE `jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `jobs_queue_index` (`queue`);
 
 --
 -- Indexes for table `migrations`
@@ -441,6 +477,12 @@ ALTER TABLE `users_verify_tokens`
 --
 
 --
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `cities`
 --
 ALTER TABLE `cities`
@@ -456,7 +498,7 @@ ALTER TABLE `countries`
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `items`
@@ -465,10 +507,16 @@ ALTER TABLE `items`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
+-- AUTO_INCREMENT for table `jobs`
+--
+ALTER TABLE `jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -504,7 +552,7 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
