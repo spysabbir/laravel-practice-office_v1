@@ -100,6 +100,15 @@ Route::get('barcode-blade', [BarcodeController::class, 'barcodeBlade']);
 
 Route::get('email-test', [UserController::class, 'sendEmail']);
 
+Route::get('call-helper', function(){
+
+    $mdY = convertYmdToMdy('2022-02-12');
+    var_dump("Converted into 'MDY': " . $mdY);
+
+    $ymd = convertMdyToYmd('02-12-2022');
+    var_dump("Converted into 'YMD': " . $ymd);
+});
+
 
 
 
